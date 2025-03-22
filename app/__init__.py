@@ -9,6 +9,9 @@ def create_app(config_object=DevelopmentConfig):
 
     db.init_app(app)
 
+    from .routes import router
+    app.register_blueprint(router)
+
     with app.app_context():
         db.create_all()
 

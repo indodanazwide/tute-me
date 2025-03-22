@@ -7,6 +7,7 @@ class User(db.Model):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -56,7 +57,7 @@ class Booking(db.Model):
 
     module = db.relationship('Module', backref='bookings')
     tutor = db.relationship('User', foreign_keys=[tutor_id], backref='tutor_bookings')
-    student = db.relationship('User', foreign_keys=[student_id], backref='student_bookings') 
+    student = db.relationship('User', foreign_keys=[student_id], backref='student_bookings')  # Add this line
     availability = db.relationship('TutorAvailability', backref='bookings')
 
     __table_args__ = (
