@@ -1,0 +1,140 @@
+@use 'index' as *;
+
+main {
+    .admin-dashboard,
+    .view-tutor,
+    .add-tutor,
+    .remove-tutor,
+    .edit-tutor,
+    .view-all-users {
+        margin-left: 250px;
+        padding: 20px;
+        width: calc(100% - 250px); 
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px; 
+        }
+        
+        thead th {
+            text-align: left; 
+            padding: 12px; 
+            border-bottom: 2px solid $soft-blue;
+        }
+        
+        tbody td {
+            text-align: left;
+            padding: 12px; 
+            border-bottom: 1px solid $soft-blue; 
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none; 
+        }
+
+        .form {
+            background-color: $bg-white;
+            border-radius: 0.75rem;
+            padding: 2rem 4rem;
+            width: 40%;
+
+            form {
+                margin-top: 1rem;
+
+                .form-group {
+                    margin-bottom: 1rem;
+
+                    input,
+                    select {
+                        width: 100%;
+                        padding: 0.75rem;
+                        border: 1px solid $soft-blue;
+                        border-radius: 0.5rem;
+                        font-size: 0.95em;
+                        color:$dark-blue;
+                        transition: border-color 0.3s ease;
+
+                        &:focus {
+                            border-color: $dark-blue;
+                            outline: none;
+                        }
+                    }
+                }
+
+                .btn {
+                    width: 100%;
+                    padding: .75rem 2rem;
+                }
+            }
+
+            hr {
+                border: none;
+                border-top: 1px solid $soft-blue;
+                margin: 1.5rem 0;
+            }
+
+            p {
+                font-size: 0.75rem;
+        
+                a {
+                    color: $soft-blue;
+                    font-weight: $font-weight-bold;
+        
+                    &:hover {
+                        color: $soft-blue;
+                    }
+                }
+            }
+        }
+
+        .cards {
+            flex-wrap: wrap;
+        }
+    }
+
+    .admin-dashboard {
+        text-align: center;
+
+        .dashboard-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-block: 6rem;
+        }
+
+        .dashboard-content {
+            .section-header,
+            .sticker {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sticker {
+                gap: 1rem;
+            }
+        }
+    }
+
+    .view-tutor {
+        padding: 4rem 6rem;
+
+        .tutor-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-bottom: 2.5rem;
+        }
+
+    }
+}

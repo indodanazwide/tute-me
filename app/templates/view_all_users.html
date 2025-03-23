@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}View All Users{% endblock %}
+
+{% block content %}
+<section class="view-all-users">
+    <div class="form">
+        <h2>These are your users</h2>
+
+        <!-- Search Bar -->
+        <form method="GET" action="{{ url_for('main.view_all_users') }}" class="search-form">
+            <div class="form-group">
+                <input type="text" name="search" placeholder="Search by name, username, or email" value="{{ request.args.get('search', '') }}">
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Users Table -->
+    <table class="users-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if not users %}
+                <tr>
+                    <td colspan="4">No users found.</td>
+                </tr>
+            {% else %}
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }} {{ user.surname }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

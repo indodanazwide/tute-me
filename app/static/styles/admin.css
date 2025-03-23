@@ -1,0 +1,380 @@
+a {
+  color: #08233E;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+a:hover {
+  color: #A1ABF9;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: #08233E;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 0.95em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FFFFFF;
+  line-height: 1.6;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #08233E;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+.cards .card {
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 40%;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.cards .card a {
+  margin-top: 1rem;
+}
+.cards .card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+button {
+  border: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 1.25rem;
+  margin: 1rem 0;
+  background-color: #A1ABF9;
+  color: #f6fafe;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  transition: 0.2s ease;
+}
+.btn span {
+  width: 100%;
+}
+.btn .arrow-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+}
+.btn:hover {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: #f6fafe;
+}
+
+.delete {
+  background-color: #ff0c08;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f6fafe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loader .circle-container {
+  position: relative;
+  width: 3.75px;
+  height: 3.75px;
+}
+
+.loader .circle {
+  width: 1rem;
+  height: 1rem;
+  background-color: #A1ABF9;
+  border-radius: 100%;
+  position: absolute;
+  animation: spinAndScale 1.5s infinite ease-in-out;
+}
+
+.loader .circle:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform-origin: bottom right;
+}
+
+.loader .circle:nth-child(2) {
+  top: 0;
+  right: 0;
+  transform-origin: bottom left;
+}
+
+.loader .circle:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  transform-origin: top right;
+}
+
+.loader .circle:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  transform-origin: top left;
+}
+
+@keyframes spinAndScale {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.3) rotate(90deg);
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+  }
+  75% {
+    transform: scale(0.8) rotate(270deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+main .admin-dashboard,
+main .view-tutor,
+main .add-tutor,
+main .remove-tutor,
+main .edit-tutor,
+main .view-all-users {
+  margin-left: 250px;
+  padding: 20px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main .admin-dashboard table,
+main .view-tutor table,
+main .add-tutor table,
+main .remove-tutor table,
+main .edit-tutor table,
+main .view-all-users table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+main .admin-dashboard thead th,
+main .view-tutor thead th,
+main .add-tutor thead th,
+main .remove-tutor thead th,
+main .edit-tutor thead th,
+main .view-all-users thead th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid #A1ABF9;
+}
+main .admin-dashboard tbody td,
+main .view-tutor tbody td,
+main .add-tutor tbody td,
+main .remove-tutor tbody td,
+main .edit-tutor tbody td,
+main .view-all-users tbody td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #A1ABF9;
+}
+main .admin-dashboard tbody tr:last-child td,
+main .view-tutor tbody tr:last-child td,
+main .add-tutor tbody tr:last-child td,
+main .remove-tutor tbody tr:last-child td,
+main .edit-tutor tbody tr:last-child td,
+main .view-all-users tbody tr:last-child td {
+  border-bottom: none;
+}
+main .admin-dashboard .form,
+main .view-tutor .form,
+main .add-tutor .form,
+main .remove-tutor .form,
+main .edit-tutor .form,
+main .view-all-users .form {
+  background-color: #FFFFFF;
+  border-radius: 0.75rem;
+  padding: 2rem 4rem;
+  width: 40%;
+}
+main .admin-dashboard .form form,
+main .view-tutor .form form,
+main .add-tutor .form form,
+main .remove-tutor .form form,
+main .edit-tutor .form form,
+main .view-all-users .form form {
+  margin-top: 1rem;
+}
+main .admin-dashboard .form form .form-group,
+main .view-tutor .form form .form-group,
+main .add-tutor .form form .form-group,
+main .remove-tutor .form form .form-group,
+main .edit-tutor .form form .form-group,
+main .view-all-users .form form .form-group {
+  margin-bottom: 1rem;
+}
+main .admin-dashboard .form form .form-group input,
+main .admin-dashboard .form form .form-group select,
+main .view-tutor .form form .form-group input,
+main .view-tutor .form form .form-group select,
+main .add-tutor .form form .form-group input,
+main .add-tutor .form form .form-group select,
+main .remove-tutor .form form .form-group input,
+main .remove-tutor .form form .form-group select,
+main .edit-tutor .form form .form-group input,
+main .edit-tutor .form form .form-group select,
+main .view-all-users .form form .form-group input,
+main .view-all-users .form form .form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #A1ABF9;
+  border-radius: 0.5rem;
+  font-size: 0.95em;
+  color: #08233E;
+  transition: border-color 0.3s ease;
+}
+main .admin-dashboard .form form .form-group input:focus,
+main .admin-dashboard .form form .form-group select:focus,
+main .view-tutor .form form .form-group input:focus,
+main .view-tutor .form form .form-group select:focus,
+main .add-tutor .form form .form-group input:focus,
+main .add-tutor .form form .form-group select:focus,
+main .remove-tutor .form form .form-group input:focus,
+main .remove-tutor .form form .form-group select:focus,
+main .edit-tutor .form form .form-group input:focus,
+main .edit-tutor .form form .form-group select:focus,
+main .view-all-users .form form .form-group input:focus,
+main .view-all-users .form form .form-group select:focus {
+  border-color: #08233E;
+  outline: none;
+}
+main .admin-dashboard .form form .btn,
+main .view-tutor .form form .btn,
+main .add-tutor .form form .btn,
+main .remove-tutor .form form .btn,
+main .edit-tutor .form form .btn,
+main .view-all-users .form form .btn {
+  width: 100%;
+  padding: 0.75rem 2rem;
+}
+main .admin-dashboard .form hr,
+main .view-tutor .form hr,
+main .add-tutor .form hr,
+main .remove-tutor .form hr,
+main .edit-tutor .form hr,
+main .view-all-users .form hr {
+  border: none;
+  border-top: 1px solid #A1ABF9;
+  margin: 1.5rem 0;
+}
+main .admin-dashboard .form p,
+main .view-tutor .form p,
+main .add-tutor .form p,
+main .remove-tutor .form p,
+main .edit-tutor .form p,
+main .view-all-users .form p {
+  font-size: 0.75rem;
+}
+main .admin-dashboard .form p a,
+main .view-tutor .form p a,
+main .add-tutor .form p a,
+main .remove-tutor .form p a,
+main .edit-tutor .form p a,
+main .view-all-users .form p a {
+  color: #A1ABF9;
+  font-weight: 700;
+}
+main .admin-dashboard .form p a:hover,
+main .view-tutor .form p a:hover,
+main .add-tutor .form p a:hover,
+main .remove-tutor .form p a:hover,
+main .edit-tutor .form p a:hover,
+main .view-all-users .form p a:hover {
+  color: #A1ABF9;
+}
+main .admin-dashboard .cards,
+main .view-tutor .cards,
+main .add-tutor .cards,
+main .remove-tutor .cards,
+main .edit-tutor .cards,
+main .view-all-users .cards {
+  flex-wrap: wrap;
+}
+main .admin-dashboard {
+  text-align: center;
+}
+main .admin-dashboard .dashboard-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-block: 6rem;
+}
+main .admin-dashboard .dashboard-content .section-header,
+main .admin-dashboard .dashboard-content .sticker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main .admin-dashboard .dashboard-content .sticker {
+  gap: 1rem;
+}
+main .view-tutor {
+  padding: 4rem 6rem;
+}
+main .view-tutor .tutor-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main .view-tutor .details {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-bottom: 2.5rem;
+}/*# sourceMappingURL=admin.css.map */

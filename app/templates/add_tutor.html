@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Tutor{% endblock %}
+
+{% block content %}
+<section class="add-tutor">
+    <div class="form">
+        <h1>Add New Tutor</h1>
+        <form method="POST" action="{{ url_for('main.add_tutor') }}">
+            
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="surname" name="surname" placeholder="Surname" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <h3>Assign Modules</h3>
+            <div class="form-group">
+                {% for module in modules %}
+                    <label>
+                        <input type="checkbox" name="module_ids" value="{{ module.module_id }}">
+                        {{ module.module_name }} ({{ module.module_code }})
+                    </label>
+                {% endfor %}
+            </div>
+
+            <h3>Availability</h3>
+            <div id="availability-section">
+                <div class="availability-item">
+                    <div class="form-group">
+                        <label>Day of Week:</label>
+                        <select name="day_of_week_0" required>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Time:</label>
+                        <input type="time" name="start_time_0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>End Time:</label>
+                        <input type="time" name="end_time_0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Module:</label>
+                        <select name="module_id_0" required>
+                            {% for module in modules %}
+                                <option value="{{ module.module_id }}">
+                                    {{ module.module_name }} ({{ module.module_code }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="add-availability" class="btn small">Add Another Availability</button>
+            <button type="submit" class="btn">Add Tutor</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    // JavaScript to dynamically add more availability fields
+    let availabilityCount = 1;
+    document.getElementById('add-availability').addEventListener('click', () => {
+        const availabilitySection = document.getElementById('availability-section');
+        const newAvailability = document.createElement('div');
+        newAvailability.className = 'availability-item';
+        newAvailability.innerHTML = `
+            <div class="form-group">
+                <label>Day of Week:</label>
+                <select name="day_of_week_${availabilityCount}" required>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Start Time:</label>
+                <input type="time" name="start_time_${availabilityCount}" required>
+            </div>
+            <div class="form-group">
+                <label>End Time:</label>
+                <input type="time" name="end_time_${availabilityCount}" required>
+            </div>
+            <div class="form-group">
+                <label>Module:</label>
+                <select name="module_id_${availabilityCount}" required>
+                    {% for module in modules %}
+                        <option value="{{ module.module_id }}">
+                            {{ module.module_name }} ({{ module.module_code }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        `;
+        availabilitySection.appendChild(newAvailability);
+        availabilityCount++;
+    });
+</script>
+{% endblock %}

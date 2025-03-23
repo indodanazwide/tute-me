@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/sass.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/students.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/tutor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/admin.css') }}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -45,12 +46,21 @@
                         </a>
 
                     {% elif session.get('role') == 'tutor' %}
-                        <!-- Student Links -->
+                        <!-- Tutor Links -->
                         <a href="{{ url_for('main.tutor_dashboard') }}" class="nav-link">
                             <span>Dashboard</span>
                         </a>
                         <a href="{{ url_for('main.view_tutor_bookings') }}" class="nav-link">
                             <span>My Bookings</span>
+                        </a>
+                        
+                    {% elif session.get('role') == 'admin' %}
+                        <!-- Admin Links -->
+                        <a href="{{ url_for('main.admin_dashboard') }}" class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="{{ url_for('main.view_all_users') }}" class="nav-link">
+                            <span>Users</span>
                         </a>
 
                     {% endif %}

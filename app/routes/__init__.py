@@ -5,3 +5,4 @@ router = Blueprint('main', __name__)
 from . import public
 from . import student
 from . import tutor
+from . import admin

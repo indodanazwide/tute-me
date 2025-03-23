@@ -16,6 +16,16 @@ app.app_context().push()
 db.drop_all()
 db.create_all()
 
+admin = [
+    User(
+        username="admin",
+        email="admin@example.com",
+        name="John",
+        surname="Doe",
+        role="admin",
+    )
+]
+
 # Seed Users (Students and Tutors)
 students = [
     User(
@@ -52,11 +62,11 @@ tutors = [
 ]
 
 # Set passwords for all users
-for user in students + tutors:
+for user in students + tutors + admin:
     user.set_password("password123")  # Set a default password for all users
 
 # Add users to the session
-db.session.add_all(students + tutors)
+db.session.add_all(students + tutors + admin)
 db.session.commit()
 
 # Seed Modules
