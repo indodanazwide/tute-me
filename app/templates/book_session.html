@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="book-session">
+    <div class="form">
+        <h2>Book a Session for {{ module.module_name }} ({{ module.module_code }})</h2>
+
+        <form method="POST" action="{{ url_for('main.book_session', module_id=module.module_id) }}">
+            <div class="form-group">
+                <label for="tutor_id">Select Tutor:</label>
+                <select name="tutor_id" id="tutor_id" required>
+                    {% for tutor in tutors %}
+                        <option value="{{ tutor.user_id }}" {% if tutor.user_id == selected_tutor_id %}selected{% endif %}>
+                            {{ tutor.name }} {{ tutor.surname }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="availability_id">Select Availability:</label>
+                <select name="availability_id" id="availability_id" required>
+                    {% for slot in availability_slots %}
+                        <option value="{{ slot.availability_id }}">
+                            {{ slot.day_of_week }} - {{ slot.start_time }} to {{ slot.end_time }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="booking_date">Select Date:</label>
+                <input type="date" name="booking_date" id="booking_date" min="{{ current_date }}" required>
+            </div>
+
+            <button type="submit" class="btn">Book Session</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

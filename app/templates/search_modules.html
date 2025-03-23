@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="search-modules">
+    <div class="form">
+        <h2>Search Modules</h2>
+        <form method="POST" action="{{ url_for('main.search_modules') }}">
+            <div class="form-group">
+                <input type="text" name="search_term" placeholder="Search by module name or code" value="{{ search_term }}">
+            </div>
+            <button type="submit" class="btn">Search</button>
+        </form>
+
+        <hr>
+
+
+    </div>
+
+    {% if modules %}
+        <div class="module-list cards">
+            {% for module in modules %}
+                <div class="module-card card">
+                    <h3>{{ module.module_name }} ({{ module.module_code }})</h3>
+                    <p>{{ module.description }}</p>
+                    <h4>Tutors:</h4>
+                    <ul>
+                        {% for tutor in module_tutors[module.module_id] %}
+                            <li>{{ tutor.name }} {{ tutor.surname }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ url_for('main.book_session', module_id=module.module_id) }}" class="btn">Book a Tutor</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No modules found.</p>
+    {% endif %}
+</section>
+{% endblock %}

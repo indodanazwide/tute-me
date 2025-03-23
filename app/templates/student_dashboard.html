@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<section class="dashboard student-dashboard">
+    <article class="dashboard-title">
+        <h1>Hi {{ session.username }}. Hope you are doing good today?</h1>
+        <p>
+            Here are the modules we offer. You can book a tutor based on the module you want.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="cards">
+            <a href="{{ url_for('main.search_modules') }}" class="btn">
+                <span>Search for modules</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+            <a href="{{ url_for('main.view_bookings') }}" class="btn">
+                <span>Go to my bookings</span>
+                <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </article>
+
+    <article class="dashboard-content-container cards" style="text-align: start;">
+        <!-- Booked Sessions -->
+        <div class="card dashboard-content">
+            <h3>Your Booked Sessions</h3>
+            {% if booked_sessions %}
+                <ul>
+                    {% for session in booked_sessions %}
+                        <li>
+                            <p>
+                                <strong>{{ session.module_name }}</strong> ({{ session.module_code }})<br>
+                                Tutor: {{ session.tutor_name }} {{ session.tutor_surname }}<br>
+                                Date: {{ session.booking_date }}<br>
+                                Time: {{ session.start_time }} - {{ session.end_time }} ({{ session.day_of_week }})
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have no booked sessions.</p>
+            {% endif %}
+        </div>
+
+        <!-- Available Modules -->
+        <div class="card dashboard-content">
+            <h3>Available Modules</h3>
+            {% if available_modules %}
+                <ul>
+                    {% for module in available_modules %}
+                        <li>
+                            <p>
+                                <strong>{{ module.module_name }}</strong> ({{ module.module_code }})<br>
+                                {{ module.description }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No modules available at the moment.</p>
+            {% endif %}
+        </div>
+    </article>
+</section>
+
+{% endblock %}

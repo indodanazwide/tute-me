@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="view-bookings">
+
+    {% if bookings|length == 1 %}
+        <div class="title">
+            <h1>Currently you have {{ bookings|length }} booking</h1>
+            <p>Make sure you don't miss it or be late!</p>
+        </div>
+
+    {% elif bookings|length > 1 %}
+        <div class="title">
+            <h1>Currently you have {{ bookings|length }} bookings</h1>
+            <p>Make sure you don't miss it or be late!</p>
+        </div>
+    {% endif %}
+    
+    {% if bookings %}
+        <div class="cards">
+            {% for booking in bookings %}
+                <div class="card">
+                    <h3>{{ booking.module.module_name }} ({{ booking.module.module_code }})</h3>
+                    <p>Tutor: {{ booking.tutor.name }} {{ booking.tutor.surname }}</p>
+                    <p>Date: {{ booking.booking_date }}</p>
+                    <p>Time: {{ booking.availability.start_time }} - {{ booking.availability.end_time }}</p>
+                    <p>Day: {{ booking.availability.day_of_week }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You have no bookings.</p>
+    {% endif %}
+</section>
+{% endblock %}

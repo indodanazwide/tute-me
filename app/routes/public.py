@@ -117,7 +117,7 @@ def signup():
 def login():
     if request.method == 'POST':
         try:
-            username_or_email = request.form['username']  # This field can now contain either username or email
+            username_or_email = request.form['username'] 
             password = request.form['password']
 
             # Input validation

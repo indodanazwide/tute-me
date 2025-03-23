@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../static/images/tute.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/sass.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/students.css') }}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -18,16 +19,44 @@
     </div>
 
     {% if session.get('user_id') %}
-        {% if session.get('role') == 'student' %} 
+        <aside class="sidebar">
+            <section class="nav">
+                <!-- Header -->
+                <article class="header">
+                    <a href="{{ url_for('main.student_dashboard') }}" class="logo">
+                        <img src="../static/images/tute.png" alt="Tute Me" width="30">
+                    </a>
+                    <h3>Tute Me!</h3>
+                </article>
 
+                <!-- Navigation Links -->
+                <article class="nav-links">
+                    {% if session.get('role') == 'student' %}
+                        <!-- Student Links -->
+                        <a href="{{ url_for('main.student_dashboard') }}" class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="{{ url_for('main.view_bookings') }}" class="nav-link">
+                            <span>My Bookings</span>
+                        </a>
+                        <a href="{{ url_for('main.search_modules') }}" class="nav-link">
+                            <span>Search Modules</span>
+                        </a>
 
-        {% elif session.get('role') == 'admin' %} 
+                    {% endif %}
+                </article>
 
-
-        {% elif session.get('role') == 'tutor' %} 
-
-
-        {% endif %}
+                <!-- Footer -->
+                <article class="footer">
+                    <a href="{{ url_for('main.logout') }}" class="nav-link logout">
+                        <span>Logout</span>
+                        <svg class="logout-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
+                        </svg>
+                    </a>
+                </article>
+            </section>
+        </aside>
 
     {% else %}
         <header>
