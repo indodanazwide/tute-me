@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Bookings{% endblock %}
+
+{% block content %}
+<section class="view-tutor-bookings">
+    <article class="title">
+        <h1>Your Bookings</h1>
+    </article>
+
+    <article class="dashboard-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Module</th>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.student_name }} {{ booking.student_surname }}</td>
+                        <td>{{ booking.module_name }}</td>
+                        <td>{{ booking.booking_date }}</td>
+                        <td>{{ booking.day_of_week }}</td>
+                        <td>{{ booking.start_time.strftime('%H:%M') }}</td>
+                        <td>{{ booking.end_time.strftime('%H:%M') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </article>
+</section>
+    
+{% endblock %}

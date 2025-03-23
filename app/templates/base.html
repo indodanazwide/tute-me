@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="../static/images/tute.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/sass.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/students.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/tutor.css') }}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
             <section class="nav">
                 <!-- Header -->
                 <article class="header">
-                    <a href="{{ url_for('main.student_dashboard') }}" class="logo">
+                    <a href="#" class="logo">
                         <img src="../static/images/tute.png" alt="Tute Me" width="30">
                     </a>
                     <h3>Tute Me!</h3>
@@ -41,6 +42,15 @@
                         </a>
                         <a href="{{ url_for('main.search_modules') }}" class="nav-link">
                             <span>Search Modules</span>
+                        </a>
+
+                    {% elif session.get('role') == 'tutor' %}
+                        <!-- Student Links -->
+                        <a href="{{ url_for('main.tutor_dashboard') }}" class="nav-link">
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="{{ url_for('main.view_tutor_bookings') }}" class="nav-link">
+                            <span>My Bookings</span>
                         </a>
 
                     {% endif %}

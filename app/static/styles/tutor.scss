@@ -1,0 +1,59 @@
+@use 'index' as *;
+
+main {
+    .tutor-dashboard,
+    .view-tutor-bookings {
+        margin-left: 250px;
+        padding: 20px;
+        width: calc(100% - 250px); 
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px; 
+        }
+        
+        thead th {
+            text-align: left; 
+            padding: 12px; 
+            border-bottom: 2px solid $soft-blue;
+        }
+        
+        tbody td {
+            text-align: left;
+            padding: 12px; 
+            border-bottom: 1px solid $soft-blue; 
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none; 
+        }
+        
+    }
+
+    .tutor-dashboard,
+    .view-tutor-bookings {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem 4rem;
+
+        article {
+            margin-top: 2rem;
+        }
+
+        .dashboard-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            p {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}

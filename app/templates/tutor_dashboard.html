@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<section class="tutor-dashboard">
+    <article class="dashboard-title">
+        <h2>Welcome, {{ session.username }} - This is your Tutor Dashboard</h2>
+        
+        <div class="">
+            <p><strong>Your Modules</strong></p>
+            <div>
+                <ul class="cards">
+                    {% for module in modules %}
+                        <li class="card">{{ module.module_name }} ({{ module.module_code }})</li>
+                    {% endfor %}
+                </ulcar>
+            </div>
+        </div>
+    </article>
+    <article class="dashboard-content card">
+        <p><strong>Your Availability</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Module</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for slot in availability %}
+                    <tr>
+                        <td>{{ slot.day_of_week }}</td>
+                        <td>{{ slot.start_time.strftime('%H:%M') }}</td>
+                        <td>{{ slot.end_time.strftime('%H:%M') }}</td>
+                        <td>{{ slot.module_name }}</td> <!-- Updated here -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </article>
+</section>
+{% endblock %}
